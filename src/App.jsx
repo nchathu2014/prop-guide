@@ -3,7 +3,7 @@ import { BasicProps } from "./components/BasicProps";
 import { ChildrenProps } from "./components/ChildrenProps";
 import { ComplexProps } from "./components/ComplexProps";
 import { RefProps } from "./components/RefProps";
-import { ThemeToggler } from "./components/ThemeToggler";
+import { ThemeToggler, ThemeProvider } from "./components/ThemeToggler";
 
 function Navigation() {
   const isDark = true;
@@ -62,7 +62,7 @@ function AppContent() {
           <div id="basic" className="scroll-mt-200">
             <BasicProps />
           </div>
-           <div id="children" className="scroll-mt-200">
+          <div id="children" className="scroll-mt-200">
             <ChildrenProps />
           </div>
           <div id="complex" className="scroll-mt-200">
@@ -71,8 +71,6 @@ function AppContent() {
           <div id="ref" className="scroll-mt-200">
             <RefProps />
           </div>
-         
-          
           <div id="theme" className="scroll-mt-200">
             <ThemeToggler />
           </div>
@@ -82,8 +80,13 @@ function AppContent() {
   );
 }
 
+//3. Wrap the AppContent with the ThemeProvider
 function App() {
-  return <AppContent />;
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
 }
 
 export default App;
