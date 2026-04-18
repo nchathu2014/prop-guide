@@ -3,10 +3,10 @@ import { BasicProps } from "./components/BasicProps";
 import { ChildrenProps } from "./components/ChildrenProps";
 import { ComplexProps } from "./components/ComplexProps";
 import { RefProps } from "./components/RefProps";
-import { ThemeToggler, ThemeProvider } from "./components/ThemeToggler";
+import { ThemeToggler, ThemeProvider, useTheme } from "./components/ThemeToggler";
 
 function Navigation() {
-  const isDark = true;
+  const {isDark} = useTheme()
   const sections = [
     { id: "basic", label: "Basic Props", icon: "📦" },
     { id: "ref", label: "Ref Props", icon: "🔗" },
@@ -21,7 +21,7 @@ function Navigation() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 shadow-50 transition-colors ${isDark ? "bg-gray-800" : "bg-white"} flex justify-center`}
+      className={`sticky top-0 z-50 shadow-50 transition-colors ${isDark ? "bg-gray-700" : "bg-gray-700"} flex justify-center`}
     >
       <div>
         <div>
@@ -44,13 +44,13 @@ function Navigation() {
 }
 
 function AppContent() {
-  const isDark = true;
+  const {themeTextColors,themeBgColors} = useTheme()
   return (
-    <div className={`min-h-screen bg-gray-800`}>
+    <div className={`min-h-screen bg-gray-700`}>
       <Navigation />
       <div className="container mx-auto px-4 py-8">
         <header
-          className={`text-center mb-12 transition-colors ${isDark ? "text-white" : "text-gray-800"}`}
+          className={`text-center mb-12 transition-colors ${themeTextColors}`}
         >
           <h1 className={`text-5xl font-bold mb-4`}>React Props Explained</h1>
           <p>A comprehensive guide to understand props in React</p>

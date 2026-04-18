@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTheme } from "./ThemeToggler";
 
 function Button({
   text = "Button",
@@ -30,10 +31,10 @@ function Button({
 
 export function BasicProps() {
   const [clickCount, setClickCount] = useState(0);
-
+const {themeTextColors, themeBgColors} = useTheme()
   return (
     <>
-      <section className="p-8 shadow-xl bg-white rounded-2xl">
+      <section className={`p-8 shadow-xl rounded-2xl ${themeBgColors}`}>
         <h2 className="text-3xl font-bold text-gray-800">Basic Props</h2>
 
         <p className="text-gray-500 text-sm mb-10 leading-relaxed">

@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useTheme } from "./ThemeToggler";
 
 function UserProfileCard({ user, theme, actions }) {
+  
   return (
     <div
-      className={`p-6 rounded-xl ${theme?.backgroundColor} ${theme?.textColor} ${theme?.avatarBg} ${theme?.badgeBg} shadow-lg`}
+      className={`p-6 rounded-xl ${theme?.backgroundColor} ${theme?.textColor} ${theme?.avatarBg} ${theme?.badgeBg} shadow-lg `}
     >
       <div>
         {user.avatar}{" "}
@@ -51,7 +53,7 @@ function UserProfileCard({ user, theme, actions }) {
 
 export function ComplexProps() {
   const [message, setMessage] = useState("");
-
+  const {themeTextColors, themeBgColors} = useTheme()
   const users = [
     {
       user: {
@@ -120,11 +122,11 @@ export function ComplexProps() {
   ];
 
   return (
-    <section className="p-8 shadow-xl bg-white rounded-2xl">
-      <h2 className="text-3xl font-bold text-gray-800 mb-5">Complex Props</h2>
+    <section className={`p-8 shadow-xl rounded-2xl ${themeBgColors}   `}>
+      <h2 className={`text-3xl font-bold  mb-5 ${themeTextColors}`}>Complex Props</h2>
 
       <div>
-        <h3 className="text-xl font-bold text-gray-800 mb-5">
+        <h3 className={`text-xl font-bold mb-5 ${themeTextColors}`}>
           User Profile Cards: <span className="font-normal">{message}</span>
         </h3>
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2  rounded-xl">

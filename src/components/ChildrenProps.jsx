@@ -1,3 +1,5 @@
+import { useTheme } from "./ThemeToggler";
+
 function Card({ children, title, color = "blue" }) {
   const colorClasses = {
     blue: "border-blue-500 bg-blue-500",
@@ -29,14 +31,15 @@ function Container({ children, layout = "vertical" }) {
 }
 
 export function ChildrenProps() {
+  const {themeTextColors, themeBgColors} = useTheme()
   return (
-    <section className="p-8 shadow-xl bg-white rounded-2xl">
-      <h2 className="text-3xl font-bold text-gray-800">Children Props</h2>
+    <section className={`p-8 shadow-xl  rounded-2xl ${themeBgColors}`}>
+      <h2 className={`text-3xl font-bold mb-3 ${themeTextColors}`}>Children Props</h2>
 
     
 
         <div className="space-y-4">
-          <div className="flex gap-4 p-5 rounded-xl border border-gray-600 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+          <div className={`flex gap-4 p-5 rounded-xl border border-gray-600 transition-colors ${themeBgColors}`}>
             <div className="shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
               1
             </div>
@@ -67,7 +70,7 @@ export function ChildrenProps() {
             </div>
           </div>
 
-          <div className="flex gap-4 p-5 rounded-xl border border-gray-600 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+          <div className={`flex gap-4 p-5 rounded-xl border border-gray-600 transition-colors ${themeBgColors}`}>
             <div className="shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
               2
             </div>
@@ -85,7 +88,7 @@ export function ChildrenProps() {
             </div>
           </div>
 
-          <div className="flex gap-4 p-5 rounded-xl border border-gray-600 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+          <div className={`flex gap-4 p-5 rounded-xl border border-gray-600 transition-colors ${themeBgColors}`}>
             <div className="shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
               3
             </div>
@@ -113,7 +116,7 @@ export function ChildrenProps() {
             </div>
           </div>
 
-          <div className="flex gap-4 p-5 rounded-xl border border-gray-600 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+          <div className={`flex gap-4 p-5 rounded-xl border border-gray-600 transition-colors ${themeBgColors}`}>
             <div className="shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
               4
             </div>
@@ -140,7 +143,7 @@ export function ChildrenProps() {
 
       <div className="space-y-6">
         <div>
-          <h3 className="mt-4 mb-5 font-semibold text-2xl">Card Component with Children</h3>
+          <h3 className={`mt-4 mb-5 font-semibold text-2xl ${themeTextColors}`}>Card Component with Children</h3>
           <Container layout="grid">
             <Card title="User Profle" color="blue">
               <p className="mb-2">

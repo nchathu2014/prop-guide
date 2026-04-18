@@ -9,9 +9,14 @@ export function ThemeProvider({ children }) {
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
 
+  const themeTextColors = theme === "dark" ? "text-gray-200" : "text-gray-800";
+  const themeBgColors = theme === "dark" ? "bg-gray-900" : "bg-white";
+
   const value = {
     theme,
     toggleTheme,
+    themeTextColors,
+    themeBgColors,
     isDark: theme === "dark",
   };
 
@@ -47,11 +52,17 @@ function ThemeToggleButton() {
 }
 
 export function ThemeToggler() {
-   const { isDark } = useTheme();
+  const { isDark } = useTheme();
 
   return (
-    <section className={`p-8 shadow-xl rounded-2xl ${isDark?'bg-gray-600':'bg-white'}`}>
-      <h2 className={`text-3xl font-bold  mb-3 ${isDark?'text-white':'text-gray-800'}`}>ThemeToggler</h2>
+    <section
+      className={`p-8 shadow-xl rounded-2xl ${isDark ? "bg-gray-900" : "bg-white"}`}
+    >
+      <h2
+        className={`text-3xl font-bold  mb-3 ${isDark ? "text-white" : "text-gray-800"}`}
+      >
+        ThemeToggler
+      </h2>
       <ThemeToggleButton />
     </section>
   );

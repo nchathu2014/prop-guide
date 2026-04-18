@@ -1,4 +1,5 @@
 import { useRef, forwardRef } from "react";
+import { useTheme } from "./ThemeToggler";
 
 //Input component accept a ref prop
 
@@ -17,6 +18,9 @@ const CustomInput = forwardRef(({ label, className, placeholder }, ref) => {
 });
 
 export function RefProps() {
+
+  const {themeTextColors, themeBgColors} = useTheme()
+
   const inputRef = useRef(null);
   const secondInputRef = useRef(null);
 
@@ -46,7 +50,7 @@ export function RefProps() {
   };
 
   return (
-    <section className="p-8 shadow-xl bg-white rounded-2xl">
+    <section className={`p-8 shadow-xl  rounded-2xl ${themeBgColors}`}>
       <h2 className="text-3xl font-bold text-gray-800 mb-3">RefProps</h2>
 
       <h2 className="text-2xl font-bold mb-2">
@@ -66,7 +70,7 @@ export function RefProps() {
       </p>
 
       <div className="space-y-4 mb-10">
-        <div className="flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+        <div className={`flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors ${themeBgColors}`}>
           <div className="shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
             1
           </div>
@@ -85,7 +89,7 @@ export function RefProps() {
           </div>
         </div>
 
-        <div className="flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+        <div className={`flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-colors ${themeBgColors}`}>
           <div className="shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
             2
           </div>
@@ -175,7 +179,7 @@ export function RefProps() {
       </p>
 
       <div className="space-y-4 mb-10">
-        <div className="flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+        <div className={`flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-purple-50 hover:border-purple-200 transition-colors ${themeBgColors}`}>
           <div className="shrink-0 w-9 h-9 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
             1
           </div>
@@ -191,7 +195,7 @@ export function RefProps() {
           </div>
         </div>
 
-        <div className="flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+        <div className={`flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-purple-50 hover:border-purple-200 transition-colors ${themeBgColors}`}>
           <div className="shrink-0 w-9 h-9 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
             2
           </div>
@@ -208,7 +212,7 @@ export function RefProps() {
           </div>
         </div>
 
-        <div className="flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+        <div className={`flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-purple-50 hover:border-purple-200 transition-colors ${themeBgColors}`}>
           <div className="shrink-0 w-9 h-9 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
             3
           </div>
