@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useTheme } from "./ThemeToggler";
+import { ThemeToggleButton, useTheme } from "./ThemeToggler";
 
 function UserProfileCard({ user, theme, actions }) {
-  
   return (
     <div
       className={`p-6 rounded-xl ${theme?.backgroundColor} ${theme?.textColor} ${theme?.avatarBg} ${theme?.badgeBg} shadow-lg `}
@@ -37,7 +36,7 @@ function UserProfileCard({ user, theme, actions }) {
             </button>
           )}
 
-           {actions.secondary && (
+          {actions.secondary && (
             <button
               onClick={actions.secondary.onClick}
               className={`${actions.secondary.className} py-2 px-3 rounded-sm mt-2 border`}
@@ -53,7 +52,7 @@ function UserProfileCard({ user, theme, actions }) {
 
 export function ComplexProps() {
   const [message, setMessage] = useState("");
-  const {themeTextColors, themeBgColors} = useTheme()
+  const { themeTextColors, themeBgColors, isDark } = useTheme();
   const users = [
     {
       user: {
@@ -122,8 +121,15 @@ export function ComplexProps() {
   ];
 
   return (
-    <section className={`p-8 shadow-xl rounded-2xl ${themeBgColors}   `}>
-      <h2 className={`text-3xl font-bold  mb-5 ${themeTextColors}`}>Complex Props</h2>
+    <section
+      className={`p-8 shadow-xl rounded-2xl ${themeBgColors} ${isDark ? "border-gray-500 border-4 shadow-2xl" : ""}`}
+    >
+      <div className="flex justify-between">
+        <h2 className={`text-3xl font-bold  mb-5 ${themeTextColors}`}>
+          Complex Props
+        </h2>
+        <ThemeToggleButton />
+      </div>
 
       <div>
         <h3 className={`text-xl font-bold mb-5 ${themeTextColors}`}>

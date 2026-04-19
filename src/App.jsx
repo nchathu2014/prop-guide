@@ -21,7 +21,7 @@ function Navigation() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 shadow-50 transition-colors ${isDark ? "bg-gray-700" : "bg-gray-700"} flex justify-center`}
+      className={`sticky top-0 z-50 shadow-50 transition-colors bg-gray-800 flex justify-center`}
     >
       <div>
         <div>
@@ -46,11 +46,11 @@ function Navigation() {
 function AppContent() {
   const {themeTextColors,themeBgColors} = useTheme()
   return (
-    <div className={`min-h-screen bg-gray-700`}>
+    <div className={`min-h-screen bg-gray-800`}>
       <Navigation />
       <div className="container mx-auto px-4 py-8">
         <header
-          className={`text-center mb-12 transition-colors ${themeTextColors}`}
+          className={`text-center mb-12 transition-colors`}
         >
           <h1 className={`text-5xl font-bold mb-4`}>React Props Explained</h1>
           <p>A comprehensive guide to understand props in React</p>

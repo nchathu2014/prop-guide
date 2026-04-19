@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTheme } from "./ThemeToggler";
+import { ThemeToggleButton, useTheme } from "./ThemeToggler";
 
 function Button({
   text = "Button",
@@ -31,99 +31,112 @@ function Button({
 
 export function BasicProps() {
   const [clickCount, setClickCount] = useState(0);
-const {themeTextColors, themeBgColors} = useTheme()
+  const { themeTextColors, themeBgColors, isDark } = useTheme();
   return (
     <>
-      <section className={`p-8 shadow-xl rounded-2xl ${themeBgColors}`}>
-        <h2 className="text-3xl font-bold text-gray-800">Basic Props</h2>
+      <section
+        className={`p-8 shadow-xl rounded-2xl ${themeBgColors} ${isDark ? "border-gray-500 border-4 shadow-2xl" : ""}`}
+      >
+        <div className="flex justify-between">
+          <h2 className={`text-3xl font-bold ${themeTextColors}`}>
+            Basic Props
+          </h2>
+          <ThemeToggleButton />
+        </div>
 
-        <p className="text-gray-500 text-sm mb-10 leading-relaxed">
+        <p className="text-gray-500 text-md mb-10 mt-3 leading-relaxed">
           A flexible, reusable React button component that supports multiple
           visual variants, sizes, and states — designed to cover the most common
           UI interaction patterns out of the box.
         </p>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold mb-1">Variants</h2>
-          <p className="text-gray-500 text-sm mb-4">
+          <h2 className={`text-xl font-semibold mb-1 ${themeTextColors}`}>
+            Variants
+          </h2>
+          <p className="text-gray-500 text-md mb-4">
             The component accepts a{" "}
-            <code className="bg-gray-100 text-pink-600 px-1 rounded">variant</code>{" "}
+            <code className={`bg-gray-100 text-pink-600 px-1 rounded`}>
+              variant
+            </code>{" "}
             prop to control the button's visual style, making it easy to
             communicate intent at a glance.
           </p>
-          <div className="space-y-3">
+          <div className="space-y-3 text-md">
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right  font-semibold text-gray-700 mt-0.5">
                 Primary
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 The default call-to-action style.
               </span>
             </div>
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right  font-semibold text-gray-700 mt-0.5">
                 Secondary
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 For less prominent actions.
               </span>
             </div>
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right  font-semibold text-gray-700 mt-0.5">
                 Danger
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 For destructive or irreversible actions.
               </span>
             </div>
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right  font-semibold text-gray-700 mt-0.5">
                 Success
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 For confirmation or completion actions.
               </span>
             </div>
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right font-semibold text-gray-700 mt-0.5">
                 Warning
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 For actions that require caution.
               </span>
             </div>
           </div>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-xl font-semibold mb-1">Sizes</h2>
-          <p className="text-gray-500 text-sm mb-4">
+        <section className="mb-10 text-md">
+          <h2 className={`text-xl font-semibold mb-1 ${themeTextColors}`}>
+            Sizes
+          </h2>
+          <p className="text-gray-500  mb-4">
             The component accepts a{" "}
             <code className="bg-gray-100 text-pink-600 px-1 rounded">size</code>{" "}
             prop with three options to fit different layout contexts.
           </p>
           <div className="space-y-3">
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right  font-semibold text-gray-700 mt-0.5">
                 Small
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 Compact, suitable for dense UIs or inline actions.
               </span>
             </div>
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right  font-semibold text-gray-700 mt-0.5">
                 Medium
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 The default size, suitable for most use cases.
               </span>
             </div>
             <div className="flex items-start gap-4">
-              <span className="w-28 text-right text-sm font-semibold text-gray-700 mt-0.5">
+              <span className="w-28 text-right  font-semibold text-gray-700 mt-0.5">
                 Large
               </span>
-              <span className="text-sm text-gray-500">
+              <span className=" text-gray-500">
                 For prominent actions that need visual emphasis.
               </span>
             </div>
@@ -131,10 +144,14 @@ const {themeTextColors, themeBgColors} = useTheme()
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold mb-1">Disable State</h2>
-          <p className="text-gray-500 text-sm">
+          <h2 className={`text-xl font-semibold mb-1 ${themeTextColors}`}>
+            Disable State
+          </h2>
+          <p className="text-gray-500">
             The component accepts a{" "}
-            <code className="bg-gray-100 text-pink-600 px-1 rounded">disabled</code>{" "}
+            <code className="bg-gray-100 text-pink-600 px-1 rounded">
+              disabled
+            </code>{" "}
             prop that visually dims the button and prevents interaction —
             clearly communicating to the user that the action is currently
             unavailable.
@@ -142,17 +159,23 @@ const {themeTextColors, themeBgColors} = useTheme()
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold mb-1">Click Tracking</h2>
-          <p className="text-gray-500 text-sm">
+          <h2 className={`text-xl font-semibold mb-1 ${themeTextColors}`}>
+            Click Tracking
+          </h2>
+          <p className="text-gray-500">
             The component supports an{" "}
-            <code className="bg-gray-100 text-pink-600 px-1 rounded">onClick</code>{" "}
+            <code className="bg-gray-100 text-pink-600 px-1 rounded">
+              onClick
+            </code>{" "}
             handler, enabling parent components to respond to user interactions
             — demonstrated here with a live click counter.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold mb-4">Props Summary</h2>
+          <h2 className={`text-xl font-semibold mb-1 ${themeTextColors}`}>
+            Props Summary
+          </h2>
           <div className="overflow-x-auto rounded-lg border border-gray-200">
             <table className="w-full text-sm text-left">
               <thead className="bg-gray-50 text-gray-600 uppercase text-xs tracking-wide">
@@ -164,7 +187,7 @@ const {themeTextColors, themeBgColors} = useTheme()
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                <tr className="hover:bg-gray-50">
+                <tr>
                   <td className="px-5 py-3">
                     <code className="text-pink-600 bg-gray-100 px-1 rounded">
                       variant
@@ -195,7 +218,7 @@ const {themeTextColors, themeBgColors} = useTheme()
                     </code>
                   </td>
                 </tr>
-                <tr className="hover:bg-gray-50">
+                <tr>
                   <td className="px-5 py-3">
                     <code className="text-pink-600 bg-gray-100 px-1 rounded">
                       size
@@ -218,7 +241,7 @@ const {themeTextColors, themeBgColors} = useTheme()
                     </code>
                   </td>
                 </tr>
-                <tr className="hover:bg-gray-50">
+                <tr>
                   <td className="px-5 py-3">
                     <code className="text-pink-600 bg-gray-100 px-1 rounded">
                       disabled
@@ -233,7 +256,7 @@ const {themeTextColors, themeBgColors} = useTheme()
                     </code>
                   </td>
                 </tr>
-                <tr className="hover:bg-gray-50">
+                <tr>
                   <td className="px-5 py-3">
                     <code className="text-pink-600 bg-gray-100 px-1 rounded">
                       onClick
@@ -245,7 +268,7 @@ const {themeTextColors, themeBgColors} = useTheme()
                     Callback fired on button click
                   </td>
                 </tr>
-                <tr className="hover:bg-gray-50">
+                <tr>
                   <td className="px-5 py-3">
                     <code className="text-pink-600 bg-gray-100 px-1 rounded">
                       children
@@ -253,7 +276,9 @@ const {themeTextColors, themeBgColors} = useTheme()
                   </td>
                   <td className="px-5 py-3 text-gray-500">node</td>
                   <td className="px-5 py-3 text-gray-500">—</td>
-                  <td className="px-5 py-3 text-gray-500">Button label content</td>
+                  <td className="px-5 py-3 text-gray-500">
+                    Button label content
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -261,10 +286,10 @@ const {themeTextColors, themeBgColors} = useTheme()
         </section>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold mb-3 mt-3 text-gray-700">
+          <h3 className={`text-xl font-semibold mb-3 ${themeTextColors}`}>
             Different Colors
           </h3>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 mb-3">
             <Button
               text="Primary"
               color="primary"
@@ -297,7 +322,7 @@ const {themeTextColors, themeBgColors} = useTheme()
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold mb-3  mt-3 text-gray-700">
+          <h3 className={`text-xl font-semibold mb-3 ${themeTextColors}`}>
             Different Sizes
           </h3>
           <div className="flex flex-wrap gap-3">
@@ -326,7 +351,7 @@ const {themeTextColors, themeBgColors} = useTheme()
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold mb-3  mt-3 text-gray-700">
+          <h3 className={`text-xl font-semibold mb-3 ${themeTextColors}`}>
             Disable State
           </h3>
           <div className="flex flex-wrap gap-3">
@@ -347,10 +372,16 @@ const {themeTextColors, themeBgColors} = useTheme()
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-          <p className="text-lg font-medium text-gray-700">
+        <div
+          className={`mt-6 p-4  rounded-lg ${isDark ? "bg-gray-600" : "bg-blue-50"}`}
+        >
+          <p className={`text-lg font-medium ${themeTextColors}`}>
             Click Count:{" "}
-            <span className="text-blue-600 font-bold">{clickCount}</span>
+            <span
+              className={`font-bold ${isDark ? "text-amber-500" : "text-blue-600 "}`}
+            >
+              {clickCount}
+            </span>
           </p>
         </div>
       </section>
